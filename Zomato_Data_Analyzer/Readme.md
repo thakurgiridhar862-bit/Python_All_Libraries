@@ -1,214 +1,90 @@
 # 🍽️ Zomato Data Analyzer
 
-A complete Data Analysis project built using Python, Pandas, NumPy, and Matplotlib to analyze real-world Zomato restaurant data and generate meaningful business insights related to restaurant popularity, ratings, customer engagement, cuisines, costs, online ordering, and table booking services.
+A Python-based Exploratory Data Analysis (EDA) project that analyzes restaurant data from Zomato to uncover meaningful insights about ratings, cuisines, online ordering, table booking, customer preferences, and restaurant popularity using real-world data.
 
 ---
 
 ## 📌 Project Overview
 
-The Zomato Data Analyzer explores restaurant data and transforms raw information into actionable business insights.
-
-The project covers:
-
-* Data Cleaning
-* Exploratory Data Analysis (EDA)
-* Popularity Analysis
-* Customer Engagement Analysis
-* Cost Analysis
-* Cuisine Analysis
-* Restaurant Type Analysis
-* Location Analysis
-* Online Order Analysis
-* Table Booking Analysis
-* Data Visualization
-* CSV Report Generation
+The objective of this project is to perform Exploratory Data Analysis (EDA) on the Zomato dataset using Python. The analysis focuses on identifying trends, cleaning the dataset, generating business insights, and visualizing important patterns through various graphs.
 
 ---
 
-## 📂 Dataset
+## 🎯 Objectives
 
-Dataset Used:
-
-* `zomato_clean.csv`
-
-Dataset contains information about:
-
-* Restaurant Names
-* Ratings
-* Votes
-* Locations
-* Restaurant Types
-* Cuisines
-* Approximate Cost for Two
-* Online Ordering Availability
-* Table Booking Availability
+- Clean and preprocess restaurant data
+- Analyze restaurant ratings and votes
+- Study the impact of online ordering and table booking
+- Identify popular restaurant locations
+- Explore cuisine distribution
+- Generate meaningful business insights using visualizations
 
 ---
 
-## 🛠️ Technologies Used
+## 📂 Dataset Information
 
-* Python
-* Pandas
-* NumPy
-* Matplotlib
-* VS Code
-* Git & GitHub
+The dataset contains information about restaurants including:
+
+- Restaurant Name
+- Online Order Availability
+- Table Booking Availability
+- Rating
+- Votes
+- Location
+- Restaurant Type
+- Cuisines
+- Approximate Cost
+- Category
 
 ---
 
-## 📊 Features Implemented
+## 📊 Analysis Performed
 
-### 1. Dataset Overview
-
-* Total Restaurants
-* Total Locations
-* Total Restaurant Types
-* Total Cuisines
-* Missing Values Analysis
-* Duplicate Records Analysis
-
-### 2. Rating Analysis
-
-* Average Restaurant Rating
-* Highest Rating
-* Lowest Rating
-* Rating Distribution Analysis
-
-### 3. Popularity Analysis
-
-* Popularity Score Calculation
-* Top 10 Most Popular Restaurants
-
-### 4. Location Analysis
-
-* Restaurant Density Analysis
-* Top 10 Restaurant Locations
-
-### 5. Restaurant Type Analysis
-
-* Most Common Restaurant Types
-* Top 10 Restaurant Categories
-
-### 6. Cuisine Analysis
-
-* Most Popular Cuisines
-* Top 10 Cuisine Categories
-
-### 7. Cost Analysis
-
-* Average Cost for Two
-* Highest Cost
-* Lowest Cost
-* Cost Distribution Analysis
-
-### 8. Online Order Analysis
-
-* Online Order Distribution
-* Average Rating Comparison
-* Average Votes Comparison
-
-### 9. Table Booking Analysis
-
-* Table Booking Distribution
-* Average Rating Comparison
-* Average Cost Comparison
-* Average Votes Comparison
-
-### 10. Votes Analysis
-
-* Average Votes
-* Highest Votes
-* Customer Engagement Analysis
-* Most Voted Restaurants
+- Dataset Overview
+- Missing Value Analysis
+- Duplicate Value Detection
+- Rating Distribution
+- Online Order Analysis
+- Table Booking Analysis
+- Most Popular Restaurant Locations
+- Top Restaurants by Votes
+- Cuisine Analysis
+- Restaurant Type Analysis
+- Business Insights
 
 ---
 
 ## 📈 Visualizations
 
-The project generates the following visualizations:
+This project includes multiple visualizations such as:
 
-### Graph 1
-
-Top 10 Most Popular Restaurants
-
-### Graph 2
-
-Top 10 Restaurant Locations
-
-### Graph 3
-
-Top 10 Restaurant Types
-
-### Graph 4
-
-Top 10 Cuisine Categories
-
-### Graph 5
-
-Restaurant Rating Distribution
-
-### Graph 6
-
-Cost Distribution for Two People
-
-### Graph 7
-
-Online Order Availability Distribution
-
-### Graph 8
-
-Table Booking Availability Distribution
+- Rating Distribution Histogram
+- Online Order Analysis
+- Table Booking Analysis
+- Top Restaurant Locations
+- Top Restaurants by Votes
+- Cuisine Distribution
+- Restaurant Category Analysis
 
 ---
 
-## 📋 Key Metrics Generated
+## 🛠️ Technologies Used
 
-The analyzer calculates:
-
-* Average Restaurant Rating
-* Average Cost for Two
-* Popularity Score
-* Customer Engagement Score
-* Restaurant Density by Location
-* Cuisine Popularity
-* Restaurant Type Popularity
-* Online Order Impact
-* Table Booking Impact
-
----
-
-## 💡 Business Insights
-
-The analysis reveals several important insights:
-
-* Restaurants with online ordering generally receive stronger customer engagement.
-* Table booking services are available in a relatively small percentage of restaurants.
-* Customer votes play a significant role in determining restaurant popularity.
-* A small number of restaurants dominate popularity rankings.
-* Certain locations contain a significantly higher concentration of restaurants.
-* North Indian, Chinese, and South Indian cuisines dominate the market.
-* Restaurant pricing varies considerably across different restaurant categories.
-* Highly rated restaurants tend to attract more customer attention and engagement.
+- Python
+- Pandas
+- NumPy
+- Matplotlib
+- Seaborn
 
 ---
 
 ## 📁 Project Structure
 
-```text
-Zomato_Data_Analyzer/
+```
+Zomato_Data_Analyzer
 │
+├── data/
 ├── graphs/
-│   ├── top10_resturants.png
-│   ├── top10_locations.png
-│   ├── top10_Resturant_types.png
-│   ├── top10_cuisines_types.png
-│   ├── Rating_wise_Resturant_dist.png
-│   ├── cost_wise_Resturant_dist.png
-│   ├── online_order_distribution.png
-│   └── table_booking_distribution.png
-│
-├── zomato_clean.csv
-├── zomato_summary.csv
 ├── main.py
 ├── README.md
 └── requirements.txt
@@ -216,42 +92,37 @@ Zomato_Data_Analyzer/
 
 ---
 
-## 🚀 How To Run
+## 🚀 Skills Demonstrated
 
-Clone the repository:
-
-```bash
-git clone <repository-link>
-```
-
-Install dependencies:
-
-```bash
-pip install pandas numpy matplotlib
-```
-
-Run the project:
-
-```bash
-python main.py
-```
+- Data Cleaning
+- Exploratory Data Analysis (EDA)
+- Data Visualization
+- Statistical Analysis
+- Feature Understanding
+- Business Insight Generation
+- Python Programming
+- Git & GitHub
 
 ---
 
-## 🎯 Learning Outcomes
+## 💡 Key Learnings
 
-Through this project I gained hands-on experience in:
+Through this project, I strengthened my understanding of:
 
-* Data Cleaning & Preprocessing
-* Exploratory Data Analysis (EDA)
-* Feature Engineering
-* Business Insight Generation
-* Data Aggregation using GroupBy
-* Data Visualization using Matplotlib
-* CSV Report Generation
-* Real-world Dataset Analysis
-* Git & GitHub Workflow
-* Analytical Thinking
+- Data preprocessing techniques
+- Handling missing values
+- Data visualization best practices
+- Extracting business insights from real-world datasets
+- Writing modular and organized analysis code
+
+---
+
+## 🔮 Future Improvements
+
+- Interactive Dashboard using Plotly
+- Streamlit Web Application
+- Machine Learning-based Restaurant Rating Prediction
+- Power BI Dashboard
 
 ---
 
@@ -259,7 +130,8 @@ Through this project I gained hands-on experience in:
 
 **Giridhar Jadon**
 
-B.Tech AIML Student
+B.Tech (Artificial Intelligence & Machine Learning)
 
-GitHub Project Challenge – Project #4
+Aspiring AI/ML Engineer
 
+GitHub: https://github.com/thakurgiridhar862-bit
