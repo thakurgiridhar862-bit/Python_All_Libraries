@@ -55,5 +55,5 @@ A data analysis project based on IPL matches and deliveries data.
 
 ## 👨‍💻 Author
 
-**Giridhar Thakur**  
+**Giridhar Jadon**  
 Aspiring AI/ML Engineer | B.Tech AIML Student
