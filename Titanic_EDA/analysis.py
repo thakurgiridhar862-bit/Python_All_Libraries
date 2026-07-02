@@ -8,7 +8,7 @@ print("=" * 50)
 
 
 def load_data():
-    df = pd.read_csv("Task_2_Titanic_EDA/data/data_titanic.csv")
+    df = pd.read_csv("Titanic_EDA/data/data_titanic.csv")
     return df
 
 
@@ -83,7 +83,7 @@ def categorical_analysis(df, column, title, graph_name, insight):
     plt.ylabel("Number of Passengers")
     plt.grid(axis="y", alpha=0.3)
 
-    plt.savefig(f"Task_2_Titanic_EDA/graphs/{graph_name}", dpi=300, bbox_inches="tight")
+    plt.savefig(f"Titanic_EDA/graphs/{graph_name}", dpi=300, bbox_inches="tight")
     plt.show()
     plt.close()
 
@@ -106,7 +106,7 @@ def numerical_analysis(df, column, title, hist_name, box_name, insight):
     plt.ylabel("Number of Passengers")
     plt.grid(axis="y", alpha=0.3)
 
-    plt.savefig(f"Task_2_Titanic_EDA/graphs/{hist_name}", dpi=300, bbox_inches="tight")
+    plt.savefig(f"Titanic_EDA/graphs/{hist_name}", dpi=300, bbox_inches="tight")
     plt.show()
     plt.close()
 
@@ -117,7 +117,7 @@ def numerical_analysis(df, column, title, hist_name, box_name, insight):
     plt.ylabel(column)
     plt.grid(axis="y", alpha=0.3)
 
-    plt.savefig(f"Task_2_Titanic_EDA/graphs/{box_name}", dpi=300, bbox_inches="tight")
+    plt.savefig(f"Titanic_EDA/graphs/{box_name}", dpi=300, bbox_inches="tight")
     plt.show()
     plt.close()
 
@@ -214,7 +214,7 @@ def categorical_bivariate_analysis(df, title, column, hue, graph_name, insight):
     plt.ylabel("Number of Passengers")
     plt.grid(axis="y", alpha=0.3)
 
-    plt.savefig(f"Task_2_Titanic_EDA/graphs/{graph_name}", dpi=300, bbox_inches="tight")
+    plt.savefig(f"Titanic_EDA/graphs/{graph_name}", dpi=300, bbox_inches="tight")
     plt.show()
     plt.close()
 
@@ -237,7 +237,7 @@ def numerical_bivariate_analysis(df, column, title, graph_name, insight):
     plt.ylabel(column)
     plt.grid(axis="y", alpha=0.3)
 
-    plt.savefig(f"Task_2_Titanic_EDA/graphs/{graph_name}", dpi=300, bbox_inches="tight")
+    plt.savefig(f"Titanic_EDA/graphs/{graph_name}", dpi=300, bbox_inches="tight")
     plt.show()
     plt.close()
 
@@ -313,7 +313,7 @@ def correlation_analysis(df):
     plt.title("Correlation Heatmap")
 
     plt.savefig(
-        "Task_2_Titanic_EDA/graphs/correlation_heatmap.png",
+        "Titanic_EDA/graphs/correlation_heatmap.png",
         dpi=300,
         bbox_inches="tight",
     )
