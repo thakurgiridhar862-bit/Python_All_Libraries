@@ -523,8 +523,8 @@ plt.savefig(
 
 summary_df = pd.DataFrame(summary_data)
 
-summary_df.to_csv("Zomato_Data_Analyzer/zomato_summary.csv", index=False)
+summary_df.to_csv("Zomato_Data_Analyzer/data/zomato_summary.csv", index=False)
 
 print("\nFINAL SUMMARY CSV CREATED SUCCESSFULLY!")
 print("-" * 50)
-print("File saved as : Zomato_Data_Analyzer/zomato_summary.csv")
+print("File saved as : Zomato_Data_Analyzer/data/zomato_summary.csv")

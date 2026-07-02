@@ -373,5 +373,5 @@ plt.tight_layout()
 plt.savefig("IPL_Data_Analyzer/graphs/ipl_heatmap.png", dpi=300, bbox_inches="tight")
 
 
-df2.to_csv("IPL_Data_Analyzer/ipl_report.csv", index=False)
+df2.to_csv("IPL_Data_Analyzer/data/ipl_report.csv", index=False)
 print("CSV Report Prepared Successfully")
