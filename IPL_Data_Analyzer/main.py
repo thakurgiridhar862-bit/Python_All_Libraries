@@ -6,8 +6,8 @@ import seaborn as sns
 #  READ DATASET
 # =============================
 
-df1 = pd.read_csv("IPL_Data_Analyzer/data.csv")
-df2 = pd.read_csv("IPL_Data_Analyzer/deliveries.csv")
+df1 = pd.read_csv("IPL_Data_Analyzer/data/data.csv")
+df2 = pd.read_csv("IPL_Data_Analyzer/data/deliveries.csv")
 
 print("=" * 50)
 print("\n              IPL DATA ANALYZER ")

@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 # ZOMATO DATASET ANALYZER
 # =========================================
 
-df = pd.read_csv("Zomato_Data_Analyzer/zomato_clean.csv")
+df = pd.read_csv("Zomato_Data_Analyzer/data/zomato_clean.csv")
 
 print("=" * 50)
 print("                     ZOMATO DATA ANALYZER")
