@@ -328,5 +328,17 @@ def correlation_analysis(df):
     )
 
 
+def main():
+    df = load_data()
+    dataset_overview(df)
+
+    df = data_cleaning(df)
+
+    univariate_analysis(df)
+    bivariate_analysis(df)
+
+    correlation_analysis(df)
+
+
 if __name__ == "__main__":
     main()
