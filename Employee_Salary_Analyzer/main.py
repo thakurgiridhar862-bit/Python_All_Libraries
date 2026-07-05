@@ -236,3 +236,68 @@ plt.savefig(
     dpi=300,
     bbox_inches="tight",
 )
+# GRAPH 3
+fig, axes3 = plt.subplots(1, 1, figsize=(16, 5))
+axes3.set_title("City-Wise Average Salary")
+axes3.set_xlabel("City")
+axes3.set_ylabel("Average Salary")
+axes3.set_ylim(140000, 170000)
+x3 = city_avg.index
+y3 = city_avg.values
+color3 = ["green" if v == max(y3) else "red" if v == min(y3) else "blue" for v in y3]
+bar3 = axes3.bar(x3, y3, color=color3)
+axes3.bar_label(bar3, labels=[f"{v:,.0f}" for v in y3], padding=5)
+axes3.grid(axis="y", linestyle="--", alpha=0.4)
+plt.savefig(
+    "Employee_Salary_Analyzer/graphs/city_wise_avg_salaries.png",
+    dpi=300,
+    bbox_inches="tight",
+)
+
+# GRAPH 4
+fig, axes4 = plt.subplots(1, 1, figsize=(8, 6))
+axes4.set_title("Gender Wise Employee Distribution")
+counts = Gen_Employees.values
+
+
+def my_autopct(pct):
+    count = int(round(pct / 100 * sum(counts)))
+    return f"{count} ({pct:.1f}%)"
+
+
+axes4.pie(
+    Gen_Employees.values,
+    labels=Gen_Employees.index,
+    autopct=my_autopct,
+    startangle=90,
+    shadow=False,
+    explode=[0.05, 0],
+    textprops={"fontsize": 15},
+)
+axes4.axis("equal")
+plt.savefig(
+    "Employee_Salary_Analyzer/graphs/gender_wise_employee_dist.png",
+    dpi=300,
+    bbox_inches="tight",
+)
+
+# GRAPH 5
+fig, axes5 = plt.subplots(1, 1, figsize=(16, 5))
+axes5.set_title("Employee Attendance Distribution")
+axes5.set_xlabel("Attendace (%)")
+axes5.set_ylabel("Number of employees")
+axes5.hist(df["Attendance"], bins=12, color="pink")
+axes5.grid(axis="y", linestyle="--", alpha=0.3)
+axes5.axvline(
+    x=avg_attendance,
+    color="red",
+    linestyle="--",
+    linewidth=2,
+    label=f"Average ({avg_attendance:.2f})",
+)
+axes5.legend()
+plt.savefig(
+    "Employee_Salary_Analyzer/graphs/attendance_dist.png",
+    dpi=300,
+    bbox_inches="tight",
+)
