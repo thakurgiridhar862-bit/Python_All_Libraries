@@ -167,3 +167,72 @@ print("Lowest Experience  :", low_exp)
 # ====================================
 # EXPERIENCE VS SALARY ANALYSIS
 # ====================================
+exp_analysis = (
+    df.groupby("Experience")
+    .agg(Average_Salary=("Salary", "mean"), Employee_Count=("EmployeeID", "count"))
+    .round(2)
+)
+
+print("\nEXPERIENCE VS SALARY ANALYSIS")
+print("-" * 50)
+print(exp_analysis.to_string())
+
+# ====================================
+# OUTPUT STATISTICS
+# ====================================
+
+print("\n OVERALL STATISTICS ")
+print("-" * 50)
+print(f"Total Employees     :{len(df)}")
+print(f"Average Salary      :{df['Salary'].mean().round(2)}")
+print(f"Highest Salary      :{df['Salary'].max()}")
+print(f"Lowest Salary       :{df['Salary'].min()}")
+print(f"Average Attendance  :{df['Attendance'].mean().round(2)}")
+print(f"Highest Attendance  :{df['Attendance'].max()}")
+print(f"Lowest Attendance   :{df['Attendance'].min()}")
+print(f"Average Experience  :{df['Experience'].mean().round(2)}")
+print(f"Highest Experience  :{df['Experience'].max()}")
+print(f"Lowest Experience   :{df['Experience'].min()}")
+
+
+# ============================================
+# VISUALISATION PROCESS
+# ============================================
+
+# GRAPH 1
+fig, axes1 = plt.subplots(1, 1, figsize=(16, 5))
+axes1.set_title("Top 10 Highest Paid Employees")
+axes1.set_xlabel("Salary")
+axes1.set_ylabel("Employee Name")
+axes1.set_xlim(295000, 300000)
+x1 = top10["Name"]
+y1 = top10["Salary"]
+color1 = ["green" if v == max(y1) else "red" if v == min(y1) else "blue" for v in y1]
+bar1 = axes1.barh(x1, y1, color=color1)
+axes1.bar_label(bar1, labels=[f"{v:,}" for v in y1], padding=5)
+axes1.invert_yaxis()
+axes1.grid(axis="x", linestyle="--", alpha=0.4)
+plt.savefig(
+    "Employee_Salary_Analyzer/graphs/top_10_highest_salaries.png",
+    dpi=300,
+    bbox_inches="tight",
+)
+
+
+# GRAPH 2
+fig, axes2 = plt.subplots(1, 1, figsize=(16, 5))
+axes2.set_title("Department Wise Average Salary")
+axes2.set_xlabel("Department")
+axes2.set_ylabel("Salary")
+axes2.set_ylim(150000, 170000)
+x2 = dept_avg.index
+y2 = dept_avg.values
+color2 = ["green" if v == max(y2) else "red" if v == min(y2) else "blue" for v in y2]
+bar2 = axes2.bar(x2, y2, color=color2)
+axes2.bar_label(bar2, labels=[f"{v:,.0f}" for v in y2], padding=5)
+axes2.grid(axis="y", linestyle="--", alpha=0.4)
+plt.savefig(
+    "Employee_Salary_Analyzer/graphs/dept_wise_avg_salaries.png",
+    dpi=300,
+    bbox_inches="tight",
+)
