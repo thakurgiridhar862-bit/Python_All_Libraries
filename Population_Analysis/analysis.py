@@ -3,18 +3,10 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 
-# ==================================================
-# LOAD DATASET
-# ==================================================
-
 df = pd.read_csv("Task_1_Population_Analysis/data/newdata.csv")
 
 df["Population_Millions"] = df["2024"] / 1_000_000
 
-
-# ==================================================
-# POPULATION STATISTICS
-# ==================================================
 
 max_country = df.loc[df["Population_Millions"].idxmax()]
 min_country = df.loc[df["Population_Millions"].idxmin()]
@@ -37,10 +29,6 @@ print("-" * 40)
 print(f"Average Population : {avg_pop:.2f} M")
 print(f"Median Population  : {median_pop:.2f} M")
 
-
-# ==================================================
-# GRAPH 1: POPULATION DISTRIBUTION HISTOGRAM
-# ==================================================
 
 plt.figure(figsize=(12, 6))
 
@@ -68,10 +56,6 @@ plt.savefig("Task_1_Population_Analysis/graphs/dist_pop.png", dpi=300)
 plt.show()
 
 
-# ==================================================
-# GRAPH 2: TOP 10 MOST POPULATED COUNTRIES
-# ==================================================
-
 top10 = df.sort_values(by="Population_Millions", ascending=False)[
     ["Country Name", "Population_Millions"]
 ].head(10)
@@ -96,10 +80,6 @@ plt.savefig("Task_1_Population_Analysis/graphs/top10_most_pop_country.png", dpi=
 
 plt.show()
 
-
-# ==================================================
-# GRAPH 3: REGION-WISE POPULATION DISTRIBUTION
-# ==================================================
 
 region_pop = (
     df.groupby("Region")["Population_Millions"]
