@@ -219,3 +219,24 @@ plt.savefig(
     dpi=300,
     bbox_inches="tight",
 )
+
+# graph six
+fig, axes_percentage = plt.subplots(1, 1, figsize=(16, 5))
+axes_percentage.set_title("Percentage distribution of students")
+axes_percentage.set_xlabel("Percentage (%) ")
+axes_percentage.set_ylabel("Number of students")
+axes_percentage.hist(df["Percentage"], bins=10, color="lightgreen")
+axes_percentage.grid(axis="y", linestyle="--", alpha=0.4)
+fig.tight_layout()
+plt.savefig(
+    "Students_Marks_Analyzer/graphs/percentage_distribution.png",
+    dpi=300,
+    bbox_inches="tight",
+)
+plt.close(fig)
+
+print("\nAll graphs generated successfully!")
+df.to_csv("Students_Marks_Analyzer/student_report.csv", index=False)
+
+print("\nstudent_report.csv generated successfully!")
+print("=" * 50)
