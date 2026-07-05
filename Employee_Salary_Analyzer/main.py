@@ -111,3 +111,59 @@ best_attendance = df.loc[df["Attendance"].idxmax()]
 avg_attendance = df["Attendance"].mean().round(2)
 highest_att = df["Attendance"].max()
 lowest_att = df["Attendance"].min()
+
+# ======================================
+# BEST ATTENDANCE EMPLOYEESS
+# ======================================
+print("\nBEST ATTENDANCE EMPLOYEE")
+print("-" * 50)
+print(f"Name        : {best_attendance['Name']}")
+print(f"Department  : {best_attendance['Department']}")
+print(f"Attendance  : {best_attendance['Attendance']}")
+print(f"Experience  : {best_attendance['Experience']}")
+
+print("-" * 50)
+print("Average attendance :", avg_attendance)
+print("Highest attendance :", highest_att)
+print("Lowest attendance :", lowest_att)
+
+
+# ====================================
+# EXPERIENCE ANALYSIS
+# ====================================
+
+most_exp = df.loc[df["Experience"].idxmax()]
+least_exp = df.loc[df["Experience"].idxmin()]
+
+print("\nMost Experienced Employee")
+print("-" * 50)
+print(f"Name       : {most_exp['Name']}")
+print(f"EmployeeID : {most_exp['EmployeeID']}")
+print(f"Salary     : {most_exp['Salary']}")
+print(f"Department : {most_exp['Department']}")
+print(f"Experience : {most_exp['Experience']}")
+print(f"Bonus      : {most_exp['Bonus']}")
+print(f"Total Compensation : {most_exp['Total Compensation']}")
+print("-" * 50)
+print("\nLeast Experienced Employee")
+print("-" * 50)
+print(f"Name       : {least_exp['Name']}")
+print(f"EmployeeID : {least_exp['EmployeeID']}")
+print(f"Salary     : {least_exp['Salary']}")
+print(f"Department : {least_exp['Department']}")
+print(f"Experience : {least_exp['Experience']}")
+print(f"Bonus      : {least_exp['Bonus']}")
+print(f"Total Compensation : {least_exp['Total Compensation']}")
+
+high_exp = df["Experience"].max()
+avg_exp = df["Experience"].mean().round(2)
+low_exp = df["Experience"].min()
+
+print("-" * 50)
+print("Average Experience :", avg_exp)
+print("Highest Experience :", high_exp)
+print("Lowest Experience  :", low_exp)
+
+# ====================================
+# EXPERIENCE VS SALARY ANALYSIS
+# ====================================
