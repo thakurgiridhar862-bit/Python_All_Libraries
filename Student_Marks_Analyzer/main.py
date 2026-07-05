@@ -109,3 +109,79 @@ print(f"Total Students : {len(df)}")
 print(f"Average Marks  : {df['Total'].mean():.2f}")
 print(f"Highest Marks  : {df['Total'].max()}")
 print(f"Lowest Marks   : {df['Total'].min()}")
+
+# graph 1
+fig, axes = plt.subplots(1, 1, figsize=(16, 5))
+axes.set_title("TOP 10 Students by Total Marks")
+axes.set_xlabel("Student Name")
+axes.set_ylabel("Marks")
+axes.set_ylim(300, 500)
+colors = [
+    "green"
+    if v == max(top10["Total"])
+    else "red"
+    if v == min(top10["Total"])
+    else "blue"
+    for v in top10["Total"]
+]
+average_marks = top10["Total"].mean()
+bars = axes.bar(top10["Name"], top10["Total"], color=colors, alpha=0.5)
+axes.axhline(
+    y=average_marks,
+    color="red",
+    linestyle="--",
+    linewidth=2,
+    label=f"Average ({average_marks:.2f})",
+)
+axes.legend(loc=1)
+axes.bar_label(bars, padding=5)
+axes.grid(axis="y", linestyle="--", alpha=0.4)
+fig.tight_layout()
+plt.savefig(
+    "Students_Marks_Analyzer/graphs/top10_students.png", dpi=300, bbox_inches="tight"
+)
+
+
+# grade vs students 2
+grade_order = ["A+", "A", "B", "C", "D", "Fail"]
+grade_distribution = grade_distribution.reindex(grade_order, fill_value=0)
+
+fig, axes_grade = plt.subplots(1, 1, figsize=(16, 5))
+x2 = grade_distribution.index
+y2 = grade_distribution.values
+axes_grade.set_title("Grade distribution of students")
+axes_grade.set_xlabel("Grades")
+axes_grade.set_ylabel("Number of students")
+axes_grade.set_ylim(0, 250)
+bars = axes_grade.bar(x2, y2, color="steelblue")
+
+axes_grade.bar_label(bars, padding=5)
+axes_grade.grid(axis="y", linestyle="--", alpha=0.4)
+fig.tight_layout()
+plt.savefig(
+    "Students_Marks_Analyzer/graphs/grades_distribution.png",
+    dpi=300,
+    bbox_inches="tight",
+)
+
+
+# graph 3
+
+fig, axes_per = plt.subplots(1, 1, figsize=(16, 5))
+x3 = class_avg.index
+y3 = class_avg.values
+axes_per.set_title("Class Wise average percentage")
+axes_per.set_xlabel("Class")
+axes_per.set_ylabel("Average Percentage")
+axes_per.set_ylim(0, 100)
+color3 = ["green" if v == max(y3) else "blue" for v in y3]
+bars = axes_per.bar(x3, y3, color=color3)
+
+axes_per.bar_label(bars, labels=[f"{v:.2f}%" for v in y3], padding=5)
+axes_per.grid(axis="y", linestyle="--", alpha=0.4)
+fig.tight_layout()
+plt.savefig(
+    "Students_Marks_Analyzer/graphs/class_average_percentage.png",
+    dpi=300,
+    bbox_inches="tight",
+)
