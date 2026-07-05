@@ -85,3 +85,27 @@ print("-" * 50)
 fail_students = df[(df[subjects] < 40).any(axis=1)]
 
 print(fail_students[["Name"] + subjects])
+
+print("\nGRADE DISTRIBUTION")
+print("-" * 50)
+
+grade_distribution = df["Grade"].value_counts()
+
+print(grade_distribution)
+
+
+print("\nTOPPER OF EACH CLASS")
+print("-" * 50)
+
+class_toppers = df.sort_values(by="Total", ascending=False).groupby("Class").first()
+
+print(class_toppers[["Name", "Total", "Percentage"]])
+
+
+print("\nOVERALL STATISTICS")
+print("-" * 50)
+
+print(f"Total Students : {len(df)}")
+print(f"Average Marks  : {df['Total'].mean():.2f}")
+print(f"Highest Marks  : {df['Total'].max()}")
+print(f"Lowest Marks   : {df['Total'].min()}")
