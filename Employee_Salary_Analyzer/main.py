@@ -301,3 +301,24 @@ plt.savefig(
     dpi=300,
     bbox_inches="tight",
 )
+# GRAPH 6
+fig, axes6 = plt.subplots(1, 1, figsize=(10, 5))
+
+x6 = exp_analysis.index
+y6 = exp_analysis["Average_Salary"]
+
+axes6.plot(x6, y6, marker="o", linewidth=2)
+
+axes6.set_title("Average Salary by Experience")
+axes6.set_xlabel("Experience (Years)")
+axes6.set_ylabel("Average Salary")
+axes6.grid(linestyle="--", alpha=0.4)
+
+plt.savefig(
+    "Employee_Salary_Analyzer/graphs/avg_salary_by_experience.png",
+    dpi=300,
+    bbox_inches="tight",
+)
+
+df.to_csv("Employee_Salary_Analyzer/employee_report.csv", index=False)
+print("\nemployee_report.csv generated successfully!")
