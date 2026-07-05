@@ -185,3 +185,37 @@ plt.savefig(
     dpi=300,
     bbox_inches="tight",
 )
+# subject wise average
+fig, axes_sub = plt.subplots(1, 1, figsize=(16, 5))
+subject_avg = df[subjects].mean().round(2)
+x4 = subject_avg.index
+y4 = subject_avg.values
+axes_sub.set_title("Subject Wise average Marks")
+axes_sub.set_xlabel("Subject")
+axes_sub.set_ylabel("Average Marks")
+axes_sub.set_ylim(0, 100)
+color4 = ["green" if v == max(y4) else "red" if v == min(y4) else "blue" for v in y4]
+bars = axes_sub.bar(x4, y4, color=color4)
+axes_sub.bar_label(bars, labels=[f"{v:.2f}" for v in y4], padding=5)
+axes_sub.grid(axis="y", linestyle="--", alpha=0.4)
+fig.tight_layout()
+plt.savefig(
+    "Students_Marks_Analyzer/graphs/subject_average_marks.png",
+    dpi=300,
+    bbox_inches="tight",
+)
+
+
+# graph 5
+fig, axes_attend = plt.subplots(1, 1, figsize=(16, 5))
+axes_attend.set_title("Attendance distribution")
+axes_attend.set_xlabel("Attendance (%) ")
+axes_attend.set_ylabel("Number of students ")
+axes_attend.hist(df["Attendance"], bins=10, color="lightblue")
+axes_attend.grid(axis="y", linestyle="--", alpha=0.4)
+fig.tight_layout()
+plt.savefig(
+    "Students_Marks_Analyzer/graphs/attendance_distribution.png",
+    dpi=300,
+    bbox_inches="tight",
+)
