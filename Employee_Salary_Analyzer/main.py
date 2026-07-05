@@ -59,3 +59,55 @@ dept_analysis = pd.DataFrame(
 )
 
 print(dept_analysis.to_string())
+
+city_avg = df.groupby("City")["Salary"].mean().round(2)
+city_max = df.groupby("City")["Salary"].max()
+city_min = df.groupby("City")["Salary"].min()
+city_Employees = df["City"].value_counts()
+city_total = df.groupby("City")["Salary"].sum()
+
+print("\nCITY WISE ANALYSIS")
+print("-" * 50)
+
+city_analysis = pd.DataFrame(
+    {
+        "Average Salary": city_avg,
+        "Maximum Salary": city_max,
+        "Minimum Salary": city_min,
+        "Employees count": city_Employees,
+        "Total Expenses": city_total,
+    }
+)
+
+print(city_analysis.to_string())
+
+Gen_avg = df.groupby("Gender")["Salary"].mean().round(2)
+Gen_max = df.groupby("Gender")["Salary"].max()
+Gen_min = df.groupby("Gender")["Salary"].min()
+Gen_Employees = df["Gender"].value_counts()
+Gen_total = df.groupby("Gender")["Salary"].sum()
+print("\nGENDER WISE ANALYSIS")
+print("-" * 50)
+
+Gen_analysis = pd.DataFrame(
+    {
+        "Average Salary": Gen_avg,
+        "Maximum Salary": Gen_max,
+        "Minimum Salary": Gen_min,
+        "Employees count": Gen_Employees,
+        "Total Expenses": Gen_total,
+    }
+)
+
+print(Gen_analysis.to_string())
+
+# LOW ATTENDANCE EMPLOYEES
+low_attendance = df[df["Attendance"] < 80]
+print("\n LOW ATTENDANCE EMPLOYEES")
+print("-" * 50)
+print(low_attendance[["Name", "Attendance", "Experience"]])
+
+best_attendance = df.loc[df["Attendance"].idxmax()]
+avg_attendance = df["Attendance"].mean().round(2)
+highest_att = df["Attendance"].max()
+lowest_att = df["Attendance"].min()
