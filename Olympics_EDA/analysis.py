@@ -425,6 +425,29 @@ def age_analysis(df):
     plt.show()
 
 
+def age_group_analysis(df):
+    print("\nAGE GROUP ANALYSIS")
+    print("-" * 60)
+
+    age_groups = df["Age_Group"].value_counts().sort_index()
+    print(age_groups)
+
+    age_data = age_groups.reset_index()
+    age_data.columns = ["Age Group", "Records"]
+    plt.figure(figsize=(11, 6))
+
+    plot = sns.barplot(data=age_data, x="Age Group", y="Records")
+    plt.title("Athlete Participation by Age Group")
+    plt.xlabel("Age Group")
+    plt.ylabel("Participation Records")
+    plt.xticks(rotation=45)
+    for container in plot.containers:
+        plot.bar_label(container, fmt="%.0f", padding=3)
+    plt.tight_layout()
+    plt.savefig("Olympics_EDA/graphs/14_age_groups.png", dpi=300)
+    plt.show()
+
+
 def main():
 
     df = load_data()
