@@ -47,6 +47,36 @@ def missing_values_report(df):
         {"Missing Values": missing_count, "Percentage": missing_percent}
     )
 
+    missing_data = missing_data[missing_data["Missing Values"] > 0].sort_values(
+        by="Missing Values", ascending=False
+    )
+    print(missing_data.round(2))
+    print("\nINSIGHTS")
+    print("-" * 60)
+    print(f"Column with highest missing values : {missing_count.idxmax()}")
+    print(
+        "Age, Height and Weight contain missing values because "
+        "physical details were not recorded for every athlete."
+    )
+    print(
+        "Medal contains many missing values because most athletes did not win a medal."
+    )
+
+    no_missing = df.columns[df.isnull().sum() == 0]
+    print(f"Columns with no missing values : {', '.join(no_missing)}")
+    plt.figure(figsize=(9, 5))
+
+    plot = sns.barplot(x=missing_data.index, y=missing_data["Missing Values"].values)
+    plt.title("Missing Values by Column")
+    plt.xlabel("Columns")
+    plt.ylabel("Missing Values")
+    plt.xticks(rotation=45)
+    for container in plot.containers:
+        plot.bar_label(container, fmt="%.0f", padding=3)
+    plt.tight_layout()
+    plt.savefig("Olympics_EDA/graphs/01_missing_values.png", dpi=300)
+    plt.show()
+
 
 def main():
 
