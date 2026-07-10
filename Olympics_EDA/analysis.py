@@ -473,6 +473,25 @@ def physical_analysis(df):
     plt.show()
 
 
+def host_city_analysis(df):
+    print("\nTOP OLYMPIC HOST CITIES")
+    print("-" * 60)
+
+    city_count = df[["Games", "City"]].drop_duplicates()["City"].value_counts().head(10)
+    print(city_count)
+    plt.figure(figsize=(10, 6))
+
+    plot = sns.barplot(x=city_count.values, y=city_count.index)
+    plt.title("Top Olympic Host Cities")
+    plt.xlabel("Number of Olympic Games")
+    plt.ylabel("City")
+    for container in plot.containers:
+        plot.bar_label(container, fmt="%.0f", padding=3)
+    plt.tight_layout()
+    plt.savefig("Olympics_EDA/graphs/16_top_host_cities.png", dpi=300)
+    plt.show()
+
+
 def main():
 
     df = load_data()
