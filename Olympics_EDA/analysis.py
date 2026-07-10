@@ -526,6 +526,33 @@ def india_analysis(df, unique_medals):
     plt.show()
 
 
+def correlation_analysis(df):
+    print("\nCORRELATION ANALYSIS")
+    print("-" * 60)
+
+    numerical_data = df[["Age", "Height", "Weight", "Year"]]
+
+    correlation = numerical_data.corr()
+    print(correlation.round(2))
+    plt.figure(figsize=(8, 6))
+
+    sns.heatmap(correlation, annot=True, fmt=".2f", linewidths=0.5)
+    plt.title("Correlation Between Numerical Features")
+    plt.tight_layout()
+    plt.savefig("Olympics_EDA/graphs/18_correlation_heatmap.png", dpi=300)
+    plt.show()
+
+
+def final_insights(df, unique_medals):
+    print("\nFINAL INSIGHTS")
+    print("-" * 60)
+
+    top_country = unique_medals["NOC"].value_counts().idxmax()
+    top_sport = df["Sport"].value_counts().idxmax()
+
+    top_city = df[["Games", "City"]].drop_duplicates()["City"].value_counts().idxmax()
+
+
 def main():
 
     df = load_data()
