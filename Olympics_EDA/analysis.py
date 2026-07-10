@@ -393,6 +393,38 @@ def top_medal_athletes(medal_df):
     plt.show()
 
 
+def age_analysis(df):
+    print("\nAGE ANALYSIS")
+    print("-" * 60)
+
+    age_data = df.dropna(subset=["Age"])
+    print(age_data["Age"].describe().round(2))
+
+    youngest = age_data.loc[age_data["Age"].idxmin()]
+    oldest = age_data.loc[age_data["Age"].idxmax()]
+    print("\nYOUNGEST ATHLETE RECORD")
+    print("-" * 60)
+    print(f"Name  : {youngest['Name']}")
+    print(f"Age   : {youngest['Age']}")
+    print(f"Sport : {youngest['Sport']}")
+    print(f"Year  : {youngest['Year']}")
+    print("\nOLDEST ATHLETE RECORD")
+    print("-" * 60)
+    print(f"Name  : {oldest['Name']}")
+    print(f"Age   : {oldest['Age']}")
+    print(f"Sport : {oldest['Sport']}")
+    print(f"Year  : {oldest['Year']}")
+    plt.figure(figsize=(10, 6))
+
+    sns.histplot(data=age_data, x="Age", bins=30, kde=True)
+    plt.title("Age Distribution of Olympic Athletes")
+    plt.xlabel("Age")
+    plt.ylabel("Participation Records")
+    plt.tight_layout()
+    plt.savefig("Olympics_EDA/graphs/13_age_distribution.png", dpi=300)
+    plt.show()
+
+
 def main():
 
     df = load_data()
