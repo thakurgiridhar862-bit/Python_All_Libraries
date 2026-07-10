@@ -327,6 +327,25 @@ def medal_distribution(unique_medals):
     plt.show()
 
 
+def top_medal_countries(unique_medals):
+    print("\nTOP 10 MEDAL WINNING COUNTRIES")
+    print("-" * 60)
+
+    country_medals = unique_medals["NOC"].value_counts().head(10)
+    print(country_medals)
+    plt.figure(figsize=(10, 6))
+
+    plot = sns.barplot(x=country_medals.values, y=country_medals.index)
+    plt.title("Top 10 Countries by Total Medals")
+    plt.xlabel("Unique Medal Records")
+    plt.ylabel("Country Code")
+    for container in plot.containers:
+        plot.bar_label(container, fmt="%.0f", padding=3)
+    plt.tight_layout()
+    plt.savefig("Olympics_EDA/graphs/11_top_medal_countries.png", dpi=300)
+    plt.show()
+
+
 def main():
 
     df = load_data()
