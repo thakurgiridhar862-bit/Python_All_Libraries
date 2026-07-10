@@ -161,6 +161,26 @@ def season_analysis(df):
     plt.show()
 
 
+def participation_over_years(df):
+    print("\nATHLETE PARTICIPATION OVER YEARS")
+    print("-" * 60)
+
+    yearly_athletes = (
+        df.groupby(["Year", "Season"])["ID"].nunique().reset_index(name="Athletes")
+    )
+    print(yearly_athletes.tail(12))
+    plt.figure(figsize=(14, 6))
+
+    sns.lineplot(data=yearly_athletes, x="Year", y="Athletes", hue="Season", marker="o")
+    plt.title("Athlete Participation Over the Years")
+    plt.xlabel("Year")
+    plt.ylabel("Unique Athletes")
+    plt.xticks(rotation=45)
+    plt.tight_layout()
+    plt.savefig("Olympics_EDA/graphs/03_participation_over_years.png", dpi=300)
+    plt.show()
+
+
 def main():
 
     df = load_data()
