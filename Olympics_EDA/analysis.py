@@ -346,6 +346,28 @@ def top_medal_countries(unique_medals):
     plt.show()
 
 
+def country_medal_table(unique_medals):
+    print("\nCOUNTRY MEDAL TABLE")
+    print("-" * 60)
+
+    medal_table = pd.crosstab(unique_medals["NOC"], unique_medals["Medal"])
+
+    for medal in ["Gold", "Silver", "Bronze"]:
+        if medal not in medal_table.columns:
+            medal_table[medal] = 0
+
+    medal_table = medal_table[["Gold", "Silver", "Bronze"]]
+
+    medal_table["Total"] = medal_table.sum(axis=1)
+
+    medal_table = medal_table.sort_values(
+        by=["Gold", "Silver", "Bronze"], ascending=False
+    )
+    print(medal_table.head(15))
+
+    medal_table.head(15).to_csv("Olympics_EDA/data/top_15_country_medal_table.csv")
+
+
 def main():
 
     df = load_data()
