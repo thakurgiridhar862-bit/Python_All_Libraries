@@ -117,6 +117,20 @@ def clean_data(df):
     return df
 
 
+def overall_statistics(df):
+    print("\nOVERALL OLYMPICS STATISTICS")
+    print("-" * 60)
+    print(f"Starting Year       : {df['Year'].min()}")
+    print(f"Ending Year         : {df['Year'].max()}")
+    print(f"Unique Athletes     : {df['ID'].nunique()}")
+    print(f"Countries           : {df['NOC'].nunique()}")
+    print(f"Teams               : {df['Team'].nunique()}")
+    print(f"Sports              : {df['Sport'].nunique()}")
+    print(f"Events              : {df['Event'].nunique()}")
+    print(f"Host Cities         : {df['City'].nunique()}")
+    print(f"Olympic Games       : {df['Games'].nunique()}")
+
+
 def main():
 
     df = load_data()
