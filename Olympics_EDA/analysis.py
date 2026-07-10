@@ -260,6 +260,38 @@ def top_sports(df):
     plt.show()
 
 
+def sports_and_events_growth(df):
+    print("\nSPORTS AND EVENTS GROWTH")
+    print("-" * 60)
+
+    growth_data = (
+        df.groupby(["Year", "Season"])
+        .agg(Sports=("Sport", "nunique"), Events=("Event", "nunique"))
+        .reset_index()
+    )
+    print(growth_data.tail(12))
+    plt.figure(figsize=(14, 6))
+
+    sns.lineplot(data=growth_data, x="Year", y="Sports", hue="Season", marker="o")
+    plt.title("Growth of Olympic Sports Over the Years")
+    plt.xlabel("Year")
+    plt.ylabel("Number of Sports")
+    plt.xticks(rotation=45)
+    plt.tight_layout()
+    plt.savefig("Olympics_EDA/graphs/08_sports_growth.png", dpi=300)
+    plt.show()
+    plt.figure(figsize=(14, 6))
+
+    sns.lineplot(data=growth_data, x="Year", y="Events", hue="Season", marker="o")
+    plt.title("Growth of Olympic Events Over the Years")
+    plt.xlabel("Year")
+    plt.ylabel("Number of Events")
+    plt.xticks(rotation=45)
+    plt.tight_layout()
+    plt.savefig("Olympics_EDA/graphs/09_events_growth.png", dpi=300)
+    plt.show()
+
+
 def main():
 
     df = load_data()
