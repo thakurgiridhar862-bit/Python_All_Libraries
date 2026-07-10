@@ -551,6 +551,18 @@ def final_insights(df, unique_medals):
     top_sport = df["Sport"].value_counts().idxmax()
 
     top_city = df[["Games", "City"]].drop_duplicates()["City"].value_counts().idxmax()
+    common_age_group = df["Age_Group"].value_counts().idxmax()
+    print(f"Country with most unique medal records : {top_country}")
+    print(f"Sport with highest participation       : {top_sport}")
+    print(f"Most frequent Olympic host city        : {top_city}")
+    print(f"Most common athlete age group          : {common_age_group}")
+    print("Olympic participation increased strongly over time.")
+    print("Female participation increased significantly in later years.")
+    print("The number of sports and events expanded across Olympic history.")
+    print(
+        "Team-sport medal duplicates were removed before calculating "
+        "country medal totals."
+    )
 
 
 def main():
