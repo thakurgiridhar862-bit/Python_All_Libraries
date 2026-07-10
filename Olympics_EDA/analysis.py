@@ -292,6 +292,41 @@ def sports_and_events_growth(df):
     plt.show()
 
 
+def prepare_medal_data(df):
+
+    medal_df = df[df["Medal"].notna()].copy()
+
+    unique_medals = medal_df.drop_duplicates(
+        subset=["Year", "Season", "Event", "NOC", "Medal"]
+    )
+    print("\nMEDAL DATA")
+    print("-" * 60)
+    print(f"Athlete Medal Records : {len(medal_df)}")
+    print(f"Unique Medal Records  : {len(unique_medals)}")
+    return medal_df, unique_medals
+
+
+def medal_distribution(unique_medals):
+    print("\nMEDAL DISTRIBUTION")
+    print("-" * 60)
+
+    medal_count = (
+        unique_medals["Medal"].value_counts().reindex(["Gold", "Silver", "Bronze"])
+    )
+    print(medal_count)
+    plt.figure(figsize=(8, 5))
+
+    plot = sns.barplot(x=medal_count.index, y=medal_count.values)
+    plt.title("Overall Medal Distribution")
+    plt.xlabel("Medal")
+    plt.ylabel("Unique Medal Records")
+    for container in plot.containers:
+        plot.bar_label(container, fmt="%.0f", padding=3)
+    plt.tight_layout()
+    plt.savefig("Olympics_EDA/graphs/10_medal_distribution.png", dpi=300)
+    plt.show()
+
+
 def main():
 
     df = load_data()
