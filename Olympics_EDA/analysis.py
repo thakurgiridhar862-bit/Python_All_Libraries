@@ -492,6 +492,40 @@ def host_city_analysis(df):
     plt.show()
 
 
+def india_analysis(df, unique_medals):
+    print("\nINDIA OLYMPICS ANALYSIS")
+    print("-" * 60)
+
+    india_df = df[df["NOC"] == "IND"]
+
+    india_medals = unique_medals[unique_medals["NOC"] == "IND"]
+    print(f"Participation Records : {len(india_df)}")
+    print(f"Unique Athletes       : {india_df['ID'].nunique()}")
+    print(f"Sports Participated   : {india_df['Sport'].nunique()}")
+    print(f"Unique Medal Records  : {len(india_medals)}")
+    print("\nINDIA MEDAL DISTRIBUTION")
+    print("-" * 60)
+    print(
+        india_medals["Medal"]
+        .value_counts()
+        .reindex(["Gold", "Silver", "Bronze"])
+        .fillna(0)
+        .astype(int)
+    )
+
+    india_year = india_df.groupby("Year")["ID"].nunique().reset_index(name="Athletes")
+    plt.figure(figsize=(14, 6))
+
+    sns.lineplot(data=india_year, x="Year", y="Athletes", marker="o")
+    plt.title("Indian Athlete Participation Over the Years")
+    plt.xlabel("Year")
+    plt.ylabel("Unique Indian Athletes")
+    plt.xticks(rotation=45)
+    plt.tight_layout()
+    plt.savefig("Olympics_EDA/graphs/17_india_participation.png", dpi=300)
+    plt.show()
+
+
 def main():
 
     df = load_data()
