@@ -448,6 +448,31 @@ def age_group_analysis(df):
     plt.show()
 
 
+def physical_analysis(df):
+    print("\nPHYSICAL CHARACTERISTICS ANALYSIS")
+    print("-" * 60)
+
+    physical_summary = df.groupby("Gender")[["Height", "Weight"]].mean().round(2)
+    print(physical_summary)
+
+    physical_data = df[["Gender", "Height", "Weight"]].dropna()
+
+    sample_size = min(5000, len(physical_data))
+
+    physical_sample = physical_data.sample(sample_size, random_state=42)
+    plt.figure(figsize=(10, 6))
+
+    sns.scatterplot(
+        data=physical_sample, x="Height", y="Weight", hue="Gender", alpha=0.6
+    )
+    plt.title("Height and Weight Relationship")
+    plt.xlabel("Height in Centimetres")
+    plt.ylabel("Weight in Kilograms")
+    plt.tight_layout()
+    plt.savefig("Olympics_EDA/graphs/15_height_weight_relationship.png", dpi=300)
+    plt.show()
+
+
 def main():
 
     df = load_data()
