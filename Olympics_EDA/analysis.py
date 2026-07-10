@@ -78,6 +78,45 @@ def missing_values_report(df):
     plt.show()
 
 
+def clean_data(df):
+    print("\nDATA CLEANING")
+    print("-" * 60)
+
+    rows_before = df.shape[0]
+
+    df = df.drop_duplicates().copy()
+
+    rows_after = df.shape[0]
+    print(f"Rows Before Cleaning     : {rows_before}")
+    print(f"Duplicate Rows Removed   : {rows_before - rows_after}")
+    print(f"Rows After Cleaning      : {rows_after}")
+
+    df["Gender"] = df["Sex"].replace({"M": "Male", "F": "Female"})
+
+    df["Won_Medal"] = df["Medal"].notna()
+
+    df["Age_Group"] = pd.cut(
+        df["Age"],
+        bins=[0, 15, 20, 25, 30, 35, 40, 50, 100],
+        labels=[
+            "Below 16",
+            "16-20",
+            "21-25",
+            "26-30",
+            "31-35",
+            "36-40",
+            "41-50",
+            "Above 50",
+        ],
+    )
+    print("\nNew Columns Added")
+    print("-" * 60)
+    print("Gender")
+    print("Won_Medal")
+    print("Age_Group")
+    return df
+
+
 def main():
 
     df = load_data()
