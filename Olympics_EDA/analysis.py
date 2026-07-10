@@ -131,6 +131,36 @@ def overall_statistics(df):
     print(f"Olympic Games       : {df['Games'].nunique()}")
 
 
+def season_analysis(df):
+    print("\nSUMMER AND WINTER OLYMPICS")
+    print("-" * 60)
+
+    season_data = (
+        df.groupby("Season")
+        .agg(
+            Records=("ID", "count"),
+            Athletes=("ID", "nunique"),
+            Sports=("Sport", "nunique"),
+            Events=("Event", "nunique"),
+        )
+        .sort_values("Records", ascending=False)
+    )
+    print(season_data)
+
+    plot_data = season_data.reset_index()
+    plt.figure(figsize=(8, 5))
+
+    plot = sns.barplot(data=plot_data, x="Season", y="Records")
+    plt.title("Summer and Winter Olympics Participation")
+    plt.xlabel("Season")
+    plt.ylabel("Participation Records")
+    for container in plot.containers:
+        plot.bar_label(container, fmt="%.0f", padding=3)
+    plt.tight_layout()
+    plt.savefig("Olympics_EDA/graphs/02_season_analysis.png", dpi=300)
+    plt.show()
+
+
 def main():
 
     df = load_data()
