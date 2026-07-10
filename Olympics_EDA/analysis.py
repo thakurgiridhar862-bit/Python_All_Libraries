@@ -368,6 +368,31 @@ def country_medal_table(unique_medals):
     medal_table.head(15).to_csv("Olympics_EDA/data/top_15_country_medal_table.csv")
 
 
+def top_medal_athletes(medal_df):
+    print("\nTOP 10 MEDAL WINNING ATHLETES")
+    print("-" * 60)
+
+    athlete_medals = (
+        medal_df.groupby(["Name", "Gender"])["Medal"]
+        .count()
+        .sort_values(ascending=False)
+        .head(10)
+        .reset_index(name="Medals")
+    )
+    print(athlete_medals)
+    plt.figure(figsize=(11, 7))
+
+    plot = sns.barplot(data=athlete_medals, x="Medals", y="Name", hue="Gender")
+    plt.title("Top 10 Medal Winning Athletes")
+    plt.xlabel("Medal Records")
+    plt.ylabel("Athlete")
+    for container in plot.containers:
+        plot.bar_label(container, fmt="%.0f", padding=3)
+    plt.tight_layout()
+    plt.savefig("Olympics_EDA/graphs/12_top_medal_athletes.png", dpi=300)
+    plt.show()
+
+
 def main():
 
     df = load_data()
