@@ -220,6 +220,27 @@ def gender_participation_over_years(df):
     plt.show()
 
 
+def top_participating_countries(df):
+    print("\nTOP 10 PARTICIPATING COUNTRIES")
+    print("-" * 60)
+
+    country_count = (
+        df.groupby("NOC")["ID"].nunique().sort_values(ascending=False).head(10)
+    )
+    print(country_count)
+    plt.figure(figsize=(10, 6))
+
+    plot = sns.barplot(x=country_count.values, y=country_count.index)
+    plt.title("Top 10 Countries by Athlete Participation")
+    plt.xlabel("Unique Athletes")
+    plt.ylabel("Country Code")
+    for container in plot.containers:
+        plot.bar_label(container, fmt="%.0f", padding=3)
+    plt.tight_layout()
+    plt.savefig("Olympics_EDA/graphs/06_top_countries_participation.png", dpi=300)
+    plt.show()
+
+
 def main():
 
     df = load_data()
