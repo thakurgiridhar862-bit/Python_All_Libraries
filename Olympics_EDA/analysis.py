@@ -241,6 +241,25 @@ def top_participating_countries(df):
     plt.show()
 
 
+def top_sports(df):
+    print("\nTOP 10 SPORTS")
+    print("-" * 60)
+
+    sport_count = df["Sport"].value_counts().head(10)
+    print(sport_count)
+    plt.figure(figsize=(10, 6))
+
+    plot = sns.barplot(x=sport_count.values, y=sport_count.index)
+    plt.title("Top 10 Sports by Participation")
+    plt.xlabel("Participation Records")
+    plt.ylabel("Sport")
+    for container in plot.containers:
+        plot.bar_label(container, fmt="%.0f", padding=3)
+    plt.tight_layout()
+    plt.savefig("Olympics_EDA/graphs/07_top_sports.png", dpi=300)
+    plt.show()
+
+
 def main():
 
     df = load_data()
