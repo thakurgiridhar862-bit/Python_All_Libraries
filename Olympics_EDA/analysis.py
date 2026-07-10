@@ -2,9 +2,9 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-print("=" * 50)
+print("=" * 60)
 print("OLYMPICS HISTORY ANALYSIS")
-print("=" * 50)
+print("=" * 60)
 
 
 def load_data():
@@ -14,89 +14,89 @@ def load_data():
 
 def dataset_overview(df):
     print("\nDATASET OVERVIEW")
-    print("-" * 50)
+    print("-" * 60)
 
     memory = df.memory_usage(deep=True).sum() / 1024 / 1024
-
     print(f"Total Rows             : {df.shape[0]}")
     print(f"Total Columns          : {df.shape[1]}")
     print(f"Total Missing Values   : {df.isnull().sum().sum()}")
     print(f"Total Duplicate Values : {df.duplicated().sum()}")
     print(f"Memory Usage           : {memory:.2f} MB")
-
-    print("\nMISSING VALUES")
-    print("-" * 50)
-    print(df.isnull().sum().sort_values(ascending=False))
-
+    print("\nFIRST FIVE ROWS")
+    print("-" * 60)
+    print(df.head())
     print("\nCOLUMN NAMES")
-    print("-" * 50)
+    print("-" * 60)
     print("\n".join(df.columns))
-
     print("\nDATA TYPES")
-    print("-" * 50)
+    print("-" * 60)
     print(df.dtypes.to_string())
-
     print("\nNUMERICAL SUMMARY")
-    print("-" * 50)
-    print(df.describe())
+    print("-" * 60)
+    print(df.describe().round(2))
 
 
 def missing_values_report(df):
     print("\nMISSING VALUES REPORT")
-    print("-" * 50)
+    print("-" * 60)
 
     missing_count = df.isnull().sum()
     missing_percent = (missing_count / len(df)) * 100
 
-    for col in df.columns:
-        if missing_count[col] > 0:
-            print(f"{col:<10} : {missing_count[col]:>6} ({missing_percent[col]:.2f}%)")
-
-    print("\nINSIGHTS")
-    print("-" * 50)
-
-    max_col = missing_count.idxmax()
-
-    print(f"• Column with highest missing values : {max_col}")
-
-    print(
-        "• Age, Height and Weight contain missing values "
-        "because athlete physical records were not available for all participants."
+    missing_data = pd.DataFrame(
+        {"Missing Values": missing_count, "Percentage": missing_percent}
     )
-
-    print(
-        "• Medal contains many missing values because most athletes "
-        "did not win any medal."
-    )
-
-    no_missing = df.columns[df.isnull().sum() == 0]
-
-    print(f"• Columns with no missing values : {', '.join(no_missing)}")
-    missing_count = df.isnull().sum()
-    missing_count = missing_count[missing_count > 0]
-
-    plt.figure(figsize=(8, 5))
-
-    sns.barplot(x=missing_count.index, y=missing_count.values)
-
-    plt.title("Missing Values by Column")
-    plt.xlabel("Columns")
-    plt.ylabel("Missing Count")
-    plt.xticks(rotation=45)
-
-    for i, value in enumerate(missing_count.values):
-        plt.text(i, value, str(value), ha="center")
-
-    plt.tight_layout()
-
-    plt.savefig("Olympics_EDA/graphs/missing_values_report.png")
-    plt.show()
 
 
 def main():
+
     df = load_data()
+
     dataset_overview(df)
+
     missing_values_report(df)
+
+    df = clean_data(df)
+
+    overall_statistics(df)
+
+    season_analysis(df)
+
+    participation_over_years(df)
+
+    gender_analysis(df)
+
+    gender_participation_over_years(df)
+
+    top_participating_countries(df)
+
+    top_sports(df)
+
+    sports_and_events_growth(df)
+
+    medal_df, unique_medals = prepare_medal_data(df)
+
+    medal_distribution(unique_medals)
+
+    top_medal_countries(unique_medals)
+
+    country_medal_table(unique_medals)
+
+    top_medal_athletes(medal_df)
+
+    age_analysis(df)
+
+    age_group_analysis(df)
+
+    physical_analysis(df)
+
+    host_city_analysis(df)
+
+    india_analysis(df, unique_medals)
+
+    correlation_analysis(df)
+
+    final_insights(df, unique_medals)
 
 
 if __name__ == "__main__":
