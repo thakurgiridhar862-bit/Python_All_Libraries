@@ -551,6 +551,7 @@ def final_insights(df, unique_medals):
     top_sport = df["Sport"].value_counts().idxmax()
 
     top_city = df[["Games", "City"]].drop_duplicates()["City"].value_counts().idxmax()
+
     common_age_group = df["Age_Group"].value_counts().idxmax()
     print(f"Country with most unique medal records : {top_country}")
     print(f"Sport with highest participation       : {top_sport}")
