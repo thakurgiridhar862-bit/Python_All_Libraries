@@ -181,6 +181,25 @@ def participation_over_years(df):
     plt.show()
 
 
+def gender_analysis(df):
+    print("\nGENDER ANALYSIS")
+    print("-" * 60)
+
+    gender_count = df["Gender"].value_counts()
+    print(gender_count)
+    plt.figure(figsize=(7, 5))
+
+    plot = sns.barplot(x=gender_count.index, y=gender_count.values)
+    plt.title("Gender Distribution of Athletes")
+    plt.xlabel("Gender")
+    plt.ylabel("Participation Records")
+    for container in plot.containers:
+        plot.bar_label(container, fmt="%.0f", padding=3)
+    plt.tight_layout()
+    plt.savefig("Olympics_EDA/graphs/04_gender_distribution.png", dpi=300)
+    plt.show()
+
+
 def main():
 
     df = load_data()
