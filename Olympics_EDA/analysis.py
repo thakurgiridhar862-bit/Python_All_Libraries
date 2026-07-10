@@ -200,6 +200,26 @@ def gender_analysis(df):
     plt.show()
 
 
+def gender_participation_over_years(df):
+    print("\nGENDER PARTICIPATION OVER YEARS")
+    print("-" * 60)
+
+    gender_year = (
+        df.groupby(["Year", "Gender"])["ID"].nunique().reset_index(name="Athletes")
+    )
+    print(gender_year.tail(12))
+    plt.figure(figsize=(14, 6))
+
+    sns.lineplot(data=gender_year, x="Year", y="Athletes", hue="Gender")
+    plt.title("Gender Participation Over the Years")
+    plt.xlabel("Year")
+    plt.ylabel("Unique Athletes")
+    plt.xticks(rotation=45)
+    plt.tight_layout()
+    plt.savefig("Olympics_EDA/graphs/05_gender_participation.png", dpi=300)
+    plt.show()
+
+
 def main():
 
     df = load_data()
